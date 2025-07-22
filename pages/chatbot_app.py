@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-
+from PIL import Image
 
 st.set_page_config(page_title="나비얌 챗봇", page_icon="🦋")
 
@@ -9,7 +9,9 @@ st.set_page_config(page_title="나비얌 챗봇", page_icon="🦋")
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-st.image("logo.png", width=150)
+logo_path = "assets/logo.png"
+image = Image.open(logo_path)
+st.image(image, width=150)
 st.markdown("<h2 style='color:#FDC100;'>🦋 나비얌 기부 챗봇</h2>", unsafe_allow_html=True)
 
 
