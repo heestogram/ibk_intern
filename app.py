@@ -4,7 +4,7 @@ from PIL import Image
 
 st.set_page_config(page_title="나비얌", page_icon="🦋", layout="centered")
 st.image("assets/logo.png", width=300)
-st.title("나비얌 기능 추가 실험실")
+st.title("나비얌 앱 기능 추가 실험실")
 
 st.markdown("### 🖱️ 체험할 기능을 선택하세요!")
 
