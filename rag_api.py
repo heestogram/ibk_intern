@@ -11,13 +11,12 @@ from langchain.prompts import PromptTemplate
 import os
 from dotenv import load_dotenv
 
-# 환경변수 로드
 load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
 app = FastAPI()
 
-# 문서 불러오기 및 벡터화
+
 loader = TextLoader("gibu_qna.txt", encoding="utf-8")
 docs = loader.load()
 splitter = RecursiveCharacterTextSplitter(chunk_size=300, chunk_overlap=50)
@@ -33,10 +32,10 @@ prompt_template = PromptTemplate(
 
 예시:
 Q: 나비얌 앱이란 무엇인가요?
-A: 나비얌은 나라사랑카드 포인트로 기부할 수 있는 플랫폼입니다.
+A: 나비얌은 우리 동네 착한 가게들과 제휴를 맺어, 사회 각층의 결식 문제를 해결하기 위한 디지털 플랫폼입니다.
 
 Q: 기부 내역은 어떻게 확인하나요?
-A: 마이페이지 > 기부 내역 메뉴에서 확인 가능합니다.
+A: 하단 탭 MY나비 > 기브 내역 메뉴에서 확인 가능합니다.
 
 ------------------
 검색된 문서:
