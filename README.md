@@ -29,7 +29,7 @@
 
 ## 🧠 Main Functions
 
-- 🔍 LangChain 기반 QnA 시스템
-- 🔍 사용자 기부 패턴 및 효과 시각화 대시보드
-- 💬 Streamlit 프론트엔드 UI
+- 💬 LangChain 기반 QnA 시스템
+- 📊 사용자 기부 패턴 및 효과 시각화 대시보드
+- 💻 Streamlit 프론트엔드 UI
 
