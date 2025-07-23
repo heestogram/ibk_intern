@@ -3,14 +3,15 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# CSV 또는 생성한 DataFrame을 불러옵니다
-df = pd.read_csv("gibu_record.csv")  # 또는 직접 생성한 df
+df = pd.read_csv("gibu_record.csv")  
 
-# 날짜 컬럼 문자열을 datetime으로 변환
 df['date'] = pd.to_datetime(df['date'])
 
-# 제목
+
 st.title("📊 기부 데이터 시각화 대시보드")
+
+if st.button("🏠Home으로 돌아가기"):
+    st.session_state.page = "main"
 
 # 날짜 필터
 min_date, max_date = df['date'].min(), df['date'].max()
@@ -24,7 +25,7 @@ selected_categories = st.multiselect("카테고리 선택", categories, default=
 regions = df['region'].unique().tolist()
 selected_regions = st.multiselect("지역 선택", regions, default=regions)
 
-# 필터 적용
+
 filtered_df = df[
     (df['date'] >= pd.to_datetime(date_range[0])) &
     (df['date'] <= pd.to_datetime(date_range[1])) &
@@ -32,19 +33,16 @@ filtered_df = df[
     (df['region'].isin(selected_regions))
 ]
 
-# 카테고리별 총 금액
 st.subheader("카테고리별 기부 금액 총합")
 fig1 = px.bar(filtered_df.groupby("category", as_index=False)['amount'].sum(),
               x='category', y='amount', text='amount')
 st.plotly_chart(fig1)
 
-# 지역별 총 금액
 st.subheader("지역별 기부 금액 총합")
 fig2 = px.bar(filtered_df.groupby("region", as_index=False)['amount'].sum(),
               x='region', y='amount', text='amount')
 st.plotly_chart(fig2)
 
-# 날짜별 추이
 st.subheader("날짜별 기부 금액 추이")
 fig3 = px.line(filtered_df.groupby('date', as_index=False)['amount'].sum(),
                x='date', y='amount', markers=True)
@@ -60,13 +58,10 @@ campaigns = pd.DataFrame([
 
 
 
-# UI
 grouped = df.groupby("region", as_index=False)["amount"].sum()
 
-# 제목
 st.title("🎁 당신의 기부가 만든 변화")
 
-# 누적 기부 정보를 기반으로 문장 출력
 for _, row in grouped.iterrows():
     region = row["region"]
     total_amount = row["amount"]

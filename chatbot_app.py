@@ -12,6 +12,10 @@ if "messages" not in st.session_state:
 logo_path = "assets/logo.png"
 image = Image.open(logo_path)
 st.image(image, width=150)
+
+if st.button("🏠Home으로 돌아가기"):
+    st.session_state.page = "main"
+
 st.markdown("<h2 style='color:#FDC100;'>🦋 나비얌 기부 챗봇</h2>", unsafe_allow_html=True)
 
 
@@ -20,7 +24,7 @@ for msg in st.session_state.messages:
         st.markdown(msg["content"])
 
 
-if prompt := st.chat_input("궁금한 점을 입력해 주세요!"):
+if prompt := st.chat_input("나비얌, 기부 시장 등에 대해 궁금한 점을 물어보세요!"):
     
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
@@ -44,3 +48,4 @@ if prompt := st.chat_input("궁금한 점을 입력해 주세요!"):
 
 st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown("<div style='text-align: center; color: gray;'>Powered by OpenAI + LangChain + FastAPI + Streamlit</div>", unsafe_allow_html=True)
+
