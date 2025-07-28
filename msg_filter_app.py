@@ -66,8 +66,7 @@ if st.button("✔️ 검사하기"):
         else:
             st.error(f"🚫 주의! 부적절한 표현일 수 있습니다. (긍정 확률: {prob:.2f})")
 
-            # LIME 하이라이팅
-            st.markdown("### 🔍 감정에 영향을 준 단어들 (LIME)")
+            st.markdown("### ✅ 문제가 될만한 부분을 바꿔봐요!")
             explainer = LimeTextExplainer(class_names=["부정", "긍정"], char_level=False)
 
             explanation = explainer.explain_instance(
@@ -78,4 +77,8 @@ if st.button("✔️ 검사하기"):
             )
             # 하이라이팅 렌더링
             highlighted_html = explanation.as_html()
+            highlighted_html = highlighted_html.replace(
+                                "Text with highlighted words", 
+                                "📝 부정적일수록 파란색으로 하이라이팅 됩니다."
+                            )
             st.components.v1.html(highlighted_html, height=400, scrolling=True)
