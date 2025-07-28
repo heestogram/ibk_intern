@@ -49,8 +49,8 @@ training_args = TrainingArguments(
 trainer = Trainer(
     model=model,
     args=training_args,
-    train_dataset=tokenized_train,  # ← 수정됨
-    eval_dataset=tokenized_test,    # ← 수정됨
+    train_dataset=tokenized_train,  
+    eval_dataset=tokenized_test,  
     tokenizer=tokenizer,
 )
 

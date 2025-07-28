@@ -6,7 +6,6 @@ from io import BytesIO
 def get_image_base64(path, fixed_height=20):
     img = Image.open(path)
 
-    # 비율 유지하며 높이에 맞게 리사이즈
     w, h = img.size
     new_height = fixed_height
     new_width = int((w / h) * new_height)

@@ -54,7 +54,6 @@ char_count = len(user_input)
 #     unsafe_allow_html=True
 # )
 
-# 검사 버튼
 if st.button("✔️ 검사하기"):
     if char_count < MIN_LEN:
         st.warning(f"메시지는 최소 {MIN_LEN}자 이상 입력해주세요.")
@@ -73,9 +72,9 @@ if st.button("✔️ 검사하기"):
                 user_input,
                 model_predict_proba,
                 num_features=6,
-                num_samples=300  # 1000~1500 적당
+                num_samples=300  # 1000~1500 적당한데 속도 이슈로 일단 300
             )
-            # 하이라이팅 렌더링
+
             highlighted_html = explanation.as_html()
             highlighted_html = highlighted_html.replace(
                                 "Text with highlighted words", 
