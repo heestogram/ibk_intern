@@ -34,6 +34,8 @@ with st.sidebar:
         st.session_state.page = "chatbot"
     if st.button("📊 기부 임팩트 대시보드"):
         st.session_state.page = "dashboard"
+    if st.button("📌 감사 메시지 필터링"):
+        st.session_state.page = "msg_filter"
 
 
 if st.session_state.page == "main":
@@ -41,21 +43,28 @@ if st.session_state.page == "main":
     st.title("나비얌 앱 기능 추가 실험실")
 
     st.markdown("<hr>", unsafe_allow_html=True)
-    st.markdown("### 🖱️ 체험할 기능을 선택하세요!")
+    st.markdown("### 🚀 체험할 기능을 선택하세요!")
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
+
     with col1:
         if st.button("💬 기부 QnA 챗봇"):
             st.session_state.page = "chatbot"
+
     with col2:
         if st.button("📊 기부 임팩트 대시보드"):
             st.session_state.page = "dashboard"
+
+    with col3:
+        if st.button("📌 감사 메시지 필터링"):
+            st.session_state.page = "msg_filter"
+
 
     st.markdown("<hr>", unsafe_allow_html=True)
     st.markdown(f"""
     <div style='display: flex; justify-content: center; align-items: center; margin-top: -5px;'>
         <img src='data:image/png;base64,{logo_base64}' width='{logo_width}' height='{logo_height}' style='margin-right: 8px;'/>
-        <span style='color: gray; font-size: 18px; font-weight: 500;'>BY IBK창공 12조</span>
+        <span style='color: gray; font-size: 15px; font-weight: 500;'>BY IBK 창공 12조</span>
     </div>
     """, unsafe_allow_html=True)
 
@@ -67,3 +76,5 @@ elif st.session_state.page == "chatbot":
 elif st.session_state.page == "dashboard":
     exec(open("dashboard_app.py").read())
 
+elif st.session_state.page == "msg_filter":
+    exec(open("msg_filter_app.py").read())
