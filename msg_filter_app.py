@@ -71,13 +71,28 @@ if st.button("✔️ 검사하기"):
             explanation = explainer.explain_instance(
                 user_input,
                 model_predict_proba,
-                num_features=6,
-                num_samples=300  # 1000~1500 적당한데 속도 이슈로 일단 300
+                num_features=10,
+                num_samples=300
             )
+            
 
-            highlighted_html = explanation.as_html()
-            highlighted_html = highlighted_html.replace(
-                                "Text with highlighted words", 
-                                "📝 부정적일수록 파란색으로 하이라이팅 됩니다."
-                            )
-            st.components.v1.html(highlighted_html, height=400, scrolling=True)
+            # 부정적인 영향을 준 단어만 추출
+            negative_words = {
+                word: weight
+                for word, weight in explanation.as_list(label=1)
+                if weight < 0
+            }
+
+            # 부정 단어가 없을 경우 예외 처리
+            if not negative_words:
+                st.info("📘 부정적인 단어가 명확히 드러나진 않아요.")
+            else:
+                # 원문 텍스트에서 부정 단어 강조
+                highlighted_text = user_input
+                for word in sorted(negative_words, key=len, reverse=True):
+                    highlighted_text = highlighted_text.replace(
+                        word, f"<mark style='background-color: #FF9999'>{word}</mark>"
+                    )
+
+                st.markdown("#### 📝 부정적인 영향을 준 단어 하이라이팅")
+                st.markdown(f"<div style='line-height:1.6;'>{highlighted_text}</div>", unsafe_allow_html=True)
