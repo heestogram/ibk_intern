@@ -12,6 +12,17 @@
 
 ---
 
+## 🧠 Main Functions
+
+> 나비얌 어플에 추가해봄직한 기능들을 실험해보는 데모 페이지를 구현했습니다!
+
+- 💬 LangChain 기반 QnA 시스템
+- 📊 사용자 기부 패턴 및 효과 시각화 대시보드
+- 📌 감사 메시지 자동 필터링
+- 💻 Streamlit 프론트엔드 UI
+
+---
+
 ## 📅 Development Period
 
 - '25.07. ~ '25.08.
@@ -28,14 +39,6 @@
   <img src="https://img.shields.io/badge/LangChain-000000?style=for-the-badge&logo=lightning&logoColor=white"/>
 </p>
 
----
 
-## 🧠 Main Functions
 
-> 나비얌 어플에 추가해봄직한 기능들을 실험해보는 데모 페이지를 구현했습니다!
-
-- 💬 LangChain 기반 QnA 시스템
-- 📊 사용자 기부 패턴 및 효과 시각화 대시보드
-- 📌 감사 메시지 자동 필터링
-- 💻 Streamlit 프론트엔드 UI
 
