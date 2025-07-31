@@ -35,10 +35,12 @@ def model_predict_proba(texts):
         probs = torch.softmax(outputs.logits, dim=-1).cpu().numpy()
     return probs
 
-st.title("📌 감사 메시지 필터링 테스트")
-
 if st.button("🏠Home으로 돌아가기"):
     st.session_state.page = "main"
+
+st.title("📌 감사 메시지 필터링 테스트")
+
+
 
 user_input = st.text_area(
     "수혜자가 보낸 감사 메시지", 

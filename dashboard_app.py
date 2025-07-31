@@ -7,21 +7,17 @@ df = pd.read_csv("gibu_record.csv")
 
 df['date'] = pd.to_datetime(df['date'])
 
-
-st.title("📊 기부 데이터 시각화 대시보드")
-
 if st.button("🏠Home으로 돌아가기"):
     st.session_state.page = "main"
 
-# 날짜 필터
+st.title("📊 기부 데이터 시각화 대시보드")
+
 min_date, max_date = df['date'].min(), df['date'].max()
 date_range = st.date_input("날짜 범위 선택", value=(min_date, max_date))
 
-# 카테고리 필터
 categories = df['category'].unique().tolist()
 selected_categories = st.multiselect("카테고리 선택", categories, default=categories)
 
-# 지역 필터
 regions = df['region'].unique().tolist()
 selected_regions = st.multiselect("지역 선택", regions, default=regions)
 
