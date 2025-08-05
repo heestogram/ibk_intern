@@ -55,3 +55,11 @@ trainer = Trainer(
 )
 
 trainer.train()
+
+
+
+# load to Huggingface
+from transformers import AutoTokenizer
+
+model.push_to_hub("anthj/naviyam-msg")
+tokenizer.push_to_hub("anthj/naviyam-msg")
