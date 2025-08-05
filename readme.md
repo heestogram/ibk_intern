@@ -28,6 +28,17 @@
 
 ---
 
+## 🛠 How to Run
+
+```bash
+# 1. Run FastAPI Server(Chatbot)
+uvicorn chatbot.rag_api:app --reload
+
+# 2. Run Streamlit App(Frontend)
+streamlit run app.py
+
+---
+
 ## 💻 Skill Stacks
 
 <p>
