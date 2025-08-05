@@ -36,6 +36,7 @@ uvicorn chatbot.rag_api:app --reload
 
 # 2. Run Streamlit App(Frontend)
 streamlit run app.py
+```
 
 ---
 
